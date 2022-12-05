@@ -1,2 +1,2 @@
 #!/bin/bash
-sort -t: -k4,4, -k3,3 /etc/passwd |tee outputfile
+less /etc/passwd
