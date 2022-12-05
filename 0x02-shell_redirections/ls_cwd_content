@@ -1,2 +1,15 @@
-#!/bin/bash
-ls -la | ls_cwd_content
+total 44
+drwxr-xr-x 2 root root 266 Dec  5 10:47 .
+drwxr-xr-x 6 root root 121 Dec  5 01:28 ..
+-rwxr--r-- 1 root root  33 Dec  5 06:15 0-hello_world
+-rwxr--r-- 1 root root  28 Dec  5 07:18 1-confused_smiley
+-rwxr--r-- 1 root root  28 Dec  5 07:39 2-hellofile
+-rwxr--r-- 1 root root  39 Dec  5 09:26 3-twofiles
+-rwxr--r-- 1 root root  33 Dec  5 09:40 4-lastlines
+-rwxr--r-- 1 root root  33 Dec  5 09:44 5-firstlines
+-rwxr--r-- 1 root root  40 Dec  5 10:13 6-third_line
+-rwxr--r-- 1 root root  99 Dec  5 10:20 7-file
+-rwxr--r-- 1 root root  36 Dec  5 10:46 8-cwd_state
+-rw-r--r-- 1 root root  12 Dec  5 10:21 \*\\'"Best School"\'\\*$\?\*\*\*\*\*:)
+-rw-r--r-- 1 root root   0 Dec  5 10:47 ls_cwd_content
+-rw-r--r-- 1 root root  19 Dec  5 01:29 README.md
