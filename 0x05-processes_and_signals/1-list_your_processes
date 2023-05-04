@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# A Bash script that displays a list of currently running processes.
+
+printf "%-10s %-10s %-10s %s\n" "USER" "PID" "%CPU" "COMMAND"
+
+processes=$(ps -e -o user,pid,pcpu,comm --sort=-%cpu)
+
+while read -r line; do
+  user=$(echo $line | awk '{print $1}')
+  pid=$(echo $line | awk '{print $2}')
+  cpu=$(echo $line | awk '{print $3}')
+  command=$(echo $line | awk '{print $4}')
+
+  hierarchy=$(pstree -p $pid | sed 's/[^0-9]/ /g')
+
+  printf "%-10s %-10s %-10s %s\n" "$user" "$pid" "$cpu" "$hierarchy $command"
+done <<< "$processes"
