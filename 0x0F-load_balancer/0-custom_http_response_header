@@ -4,7 +4,13 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow "Nginx HTTP"
 
-proxy_set_header X-Served-By:$hostname;
+echo "X-Served-By:$"
+read -r hostname
+if [ "$hostname" = "542082-web-01" ]; then
+    echo "X-Served-By:542082-web-01"
+else
+    echo "X-Served-By:100261-web-02"
+fi
 
 echo 'Hello World!' > /var/www/html/index.html
 
