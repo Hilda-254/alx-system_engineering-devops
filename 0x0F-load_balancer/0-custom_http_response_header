@@ -7,39 +7,34 @@ sudo ufw allow "Nginx HTTP"
 echo "X-Served-By:$"
 read -r hostname
 if [ "$hostname" = "542082-web-01" ]; then
-    echo "X-Served-By:542082-web-01"
+echo "X-Served-By:542082-web-01"
 else
-    echo "X-Served-By:100261-web-02"
+echo "X-Served-By:100261-web-02"
 fi
 
 echo 'Hello World!' > /var/www/html/index.html
 
-mkdir /etc/nginx/html
+mkdir -p /etc/nginx/html
 echo "Hello World" > /etc/nginx/html/index.html
 printf %s "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    index  index.html index.htm;
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
+listen 80;
+listen [::]:80 default_server;
+root /etc/nginx/html;
+index index.html index.htm;
+location /redirect_me {
+return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+}
 }" > /etc/nginx/sites-enabled/default
 
-mkdir /etc/nginx/html
-echo "Hello World" > /etc/nginx/html/index.html
 echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 
 printf %s "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    
-    error_page 404 /404.html;
-    location /404 {
-      root /etc/nginx/html;
-      internal;
-    }
+listen 80 default_server;
+listen [::]:80 default_server;
+root /etc/nginx/html;
+error_page 404 /404.html;
+location = /404.html {
+    internal;
 }" > /etc/nginx/sites-enabled/default
 
 sudo service nginx start
